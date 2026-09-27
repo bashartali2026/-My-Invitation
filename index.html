@@ -1,0 +1,354 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>You're Invited 💌</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Georgia, serif;
+            background: linear-gradient(135deg, #ffe4ec, #fff5e6, #fce1f0);
+            color: #5c3545;
+            padding: 20px;
+        }
+        .invitation {
+            width: 100%;
+            max-width: 500px;
+            background: #fffdf7;
+            padding: 40px 25px;
+            text-align: center;
+            border-radius: 18px;
+            /* Elegant border */
+            border: 3px solid #17365d;
+            outline: 2px solid #c9a227;
+            outline-offset: 6px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.20);
+            
+        }
+        .flower {
+            font-size: 45px;
+        }
+
+        h1 {
+            font-size: 42px;
+            margin: 10px 0;
+            color: #a64d70;
+        }
+
+        h2 {
+            color: #c9a227;
+            font-size: 25px;
+            font-weight: normal;
+            margin: 5px 0 18px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .message {
+            font-size: 18px;
+            line-height: 1.7;
+            margin: 25px 0;
+        }
+
+        .details {
+            background: #fff0f5;
+            padding: 20px;
+            border-radius: 18px;
+            margin: 20px 0;
+            line-height: 2;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 14px 34px;
+            background: #17365d;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-family: Georgia, serif;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+
+            .button:hover {
+                background: #c9a227;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+            }
+
+        .heart {
+            font-size: 25px;
+            margin-top: 20px;
+        }
+        .flower {
+            font-size: 45px;
+            animation: floatFlower 3s ease-in-out infinite;
+        }
+
+        @keyframes floatFlower {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+        .welcome-screen {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, #0b1f3a, #17365d, #c9a227);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            padding: 20px;
+        }
+        .welcome-card {
+            width: 100%;
+            max-width: 450px;
+            background: rgba(255, 255, 255, 0.97);
+            padding: 50px 30px;
+            text-align: center;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.30);
+            border: 2px solid #c9a227;
+        }
+
+        .graduation-icon {
+            font-size: 65px;
+            margin-bottom: 15px;
+            animation: floatCap 3s ease-in-out infinite;
+        }
+
+        @keyframes floatCap {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .welcome-card h1 {
+            color: #17365d;
+            font-size: 38px;
+            margin: 8px 0 0;
+            font-family: Georgia, serif;
+            letter-spacing: 1px;
+        }
+
+
+        .welcome-card p {
+            color: #4f5d6b;
+            font-size: 16px;
+            line-height: 1.7;
+            margin: 12px 0 28px;
+        }
+
+        .welcome-card button {
+            border: none;
+            padding: 14px 34px;
+            border-radius: 30px;
+            background: #17365d;
+            color: white;
+            font-size: 16px;
+            font-family: Georgia, serif;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: 0.3s;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+            .welcome-card button:hover {
+                background: #c9a227;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+            }
+        .floating-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 35px;
+            color: #e8a0b8;
+            letter-spacing: 20px;
+            animation: heartsFloat 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes heartsFloat {
+            0%, 100% {
+                transform: translateY(0);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: translateY(20px);
+                opacity: 1;
+            }
+        }
+        .closing-message {
+            color: #5b6573;
+            font-size: 16px;
+            font-style: italic;
+            line-height: 1.6;
+            margin: 25px 10px 5px;
+        }
+
+        .invitation.open {
+            animation: cardReveal 1.2s ease-out forwards;
+        }
+
+        @keyframes cardReveal {
+            0% {
+                opacity: 0;
+                transform: translateY(80px) scale(0.85);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translateY(-10px) scale(1.03);
+            }
+
+            75% {
+                transform: translateY(4px) scale(0.99);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <div class="welcome-screen">
+
+        <div class="welcome-card">
+
+            <div class="graduation-icon">🎓</div>
+
+            <p class="welcome-small">YOU ARE CORDIALLY INVITED</p>
+
+            <h1>Half Graduation</h1>
+
+            <h2>Celebration</h2>
+
+            <div class="gold-line"></div>
+
+            <p class="welcome-text">
+                Join us as we celebrate this special milestone
+                and the journey we have shared so far.
+            </p>
+
+            <button onclick="openInvitation()">
+                Open Invitation
+            </button>
+
+        </div>
+
+    </div>
+    <div class="invitation">
+
+        <div class="flower">🎓</div>
+
+        <h1>Half Graduation</h1>
+        <h2>Celebration</h2>
+
+        <p class="message">
+            Respected Professor,
+            <br><br>
+            It is our pleasure to cordially invite you
+            to join us in celebrating our Half Graduation.
+            <br><br>
+            Your presence will make this special milestone
+            even more meaningful and memorable for us.
+        </p>
+
+        <div class="details">
+            📅 <b>Date:</b> 1 October 2026<br>
+            ⏰ <b>Time:</b> 11:00 AM<br>
+        </div>
+        <p class="closing-message">
+            We would be honored by your presence at this special celebration.
+        </p>
+
+        <button type="button" onclick="acceptInvitation()" style="cursor:pointer; position:relative; z-index:9999;">
+            💌 Accept Invitation
+        </button>
+
+        <div id="response" style="display:none; margin-top:25px; padding:25px; border-radius:18px; background:#f8f5ea; text-align:center; border:1px solid #c9a227;">
+
+            <h2 style="color:#17365d; margin-bottom:10px;">
+                Thank You
+            </h2>
+
+            <p style="color:#4f5d6b; line-height:1.6;">
+                Thank you for accepting our invitation.
+                We look forward to celebrating this special milestone with you.
+            </p>
+
+            <p style="color:#c9a227; font-weight:bold;">
+                🎓 We look forward to your presence.
+            </p>
+
+        </div>
+        <div class="heart">♡ We would love to see you ♡</div>
+
+    </div>
+    <script>
+        function acceptInvitation() {
+            document.getElementById("response").style.display = "block";
+        }
+    </script>
+
+    <script>
+        function openInvitation() {
+            const welcome = document.querySelector(".welcome-screen");
+
+            welcome.style.opacity = "0";
+            welcome.style.transform = "scale(1.08)";
+
+            setTimeout(() => {
+                welcome.style.display = "none";
+            }, 800);
+        }
+    </script>
+    <script>
+        function openInvitation() {
+
+            const welcome = document.querySelector(".welcome-screen");
+            const invitation = document.querySelector(".invitation");
+
+            welcome.style.opacity = "0";
+            welcome.style.transform = "scale(1.08)";
+
+            setTimeout(function () {
+                welcome.style.display = "none";
+                invitation.classList.add("open");
+            }, 800);
+        }
+    </script>
+</body>
+</html>
